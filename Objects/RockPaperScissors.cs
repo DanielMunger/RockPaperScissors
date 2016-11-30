@@ -7,12 +7,29 @@ namespace RockPaperScissors.Objects
   {
     public string Outcome {get; set;}
     private Dictionary<string, string> _playerChoices = new Dictionary<string, string> {};
-
+    public string PlayerTurn {get; set;}
+    private static List<Game> _gameList = new List<Game> {};
 
     public Game(string PlayerOneChoice, string PlayerTwoChoice)
     {
       _playerChoices.Add("Player One", PlayerOneChoice);
       _playerChoices.Add("Player Two", PlayerTwoChoice);
+      PlayerTurn = "Player1";
+      _gameList.Add(this);
+    }
+
+    public static List<Game> GetAll()
+    {
+      return _gameList;
+    }
+
+    public void SetPlayerOneChoice(string PlayerOneChoice)
+    {
+      _playerChoices["Player One"] = PlayerOneChoice;
+    }
+    public void SetPlayerTwoChoice(string PlayerTwoChoice)
+    {
+      _playerChoices["Player Two"] = PlayerTwoChoice;
     }
 
     public Dictionary<string, string> Compare()
