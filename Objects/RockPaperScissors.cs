@@ -31,6 +31,10 @@ namespace RockPaperScissors.Objects
     {
       _playerChoices["Player Two"] = PlayerTwoChoice;
     }
+    public Dictionary<string, string> GetPlayerChoices()
+    {
+      return _playerChoices;
+    }
 
     public Dictionary<string, string> Compare()
     {

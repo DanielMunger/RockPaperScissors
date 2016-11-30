@@ -17,6 +17,7 @@ namespace RockPaperScissors
         List<Game> newList = new List<Game> {};
         newList = Game.GetAll();
         Game newGame = newList[0];
+        Dictionary<string, string> newDictionary = newGame.GetPlayerChoices();
         if(parameters.player == "Player1")
         {
           newGame.SetPlayerOneChoice(parameters.id);
@@ -24,13 +25,14 @@ namespace RockPaperScissors
           return View["RPS.cshtml", newGame.PlayerTurn];
           //Console.WriteLine(parameters.id);
         }
-        else
+        if(parameters.player == "Player2")
         {
           newGame.SetPlayerTwoChoice(parameters.id);
           newGame.Compare();
+          Console.WriteLine(newDictionary["Player One"], newDictionary["Player Two"]);
           return View["Outcome.cshtml", newGame];
-          //Console.WriteLine(parameters.id);
         }
+        return View["Outcome.cshtml", newGame];
       };
 
     }
